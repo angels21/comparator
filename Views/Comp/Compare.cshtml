@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Comparison Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">The Comparison Calculator</h1>
+</div>
+
+@{
+    if(ViewBag.Result == null || ViewBag.numberOne == null || ViewBag.numberTwo == null)
+    {    <div class="text-center">
+            <p>The number field cannot be empty</p>
+        </div>
+    }
+    else if(ViewBag.Result > 0 )
+    {
+        <div class="text-center">
+            <p>The number @ViewBag.numberOne with Square root @ViewBag.SqrtnumberOne has a higher square root than the number @ViewBag.numberTwo with square root @ViewBag.SqrtnumberTwo</p>
+        </div>
+    }
+    else if(ViewBag.Result < 0 )
+    {
+        <div class="text-center">
+            <p>The number @ViewBag.numberOne with Square root @ViewBag.SqrtnumberOne has a lesser square root than the number @ViewBag.numberTwo with square root @ViewBag.SqrtnumberTwo</p>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <p>The first and second numbers are equal and have the same Square root which is @ViewBag.SqrtnumberOne</p>
+        </div>
+    }
+    
+}
+    
+
+
+<div class="text-center">
+    <form asp-controller="Comp" asp-action="Compare" method="POST">
+
+        <input type="number" placeholder="First Number" name="firstNumber"/>
+        <input type="number" placeholder="Second Number" name="secondNumber"/>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
